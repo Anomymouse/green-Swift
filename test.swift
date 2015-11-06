@@ -65,7 +65,7 @@ func main(argv: [String]) {
 
     let roll = {
         (startDate: NSDate, n: Int) in
-        (1...n).map(partial(startDate)).filter({$0}).map({$0!}).map(rollOnDate)
+        (1...n).map(partial(nDaysAgo, defaultDate: startDate)).filter({$0 != nil}).map({$0!}).map(rollOnDate)
     }
 
     if argv.count == 2 {
